@@ -47,6 +47,11 @@ THIS_DIR=`dirname $0`
 TC_INSTALL_DIR=`cd $THIS_DIR;pwd`/../..
 PLUGIN_LIB_DIR="$TC_INSTALL_DIR/plugins/lib"
 PLUGIN_API_DIR="$TC_INSTALL_DIR/plugins/api"
+INSTALLER_DIR="$(dirname $(dirname "$TC_INSTALL_DIR"))/install"
+
+if [ -r "$INSTALLER_DIR"/bin/setenv.sh ] ; then
+  . "$INSTALLER_DIR"/bin/setenv.sh
+fi
 
 if test \! -d "${JAVA_HOME}"; then
   echo "$0: the JAVA_HOME environment variable is not defined correctly"
